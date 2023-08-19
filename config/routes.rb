@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # Rota para a busca de clientes
   get '/cliente/buscar', to: 'clientes#buscar', as: :busca_clientes
-  get '/cliente/resultado', to: 'clientes#resultado', as: :resultado_busca_clientes
+  get '/cliente/buscar_clientes', to: 'clientes#buscar_clientes', as: :resultado_busca_clientes
 
   # Rota para a busca de quartos
   get 'buscar_quartos', to: 'quartos#buscar', as: 'buscar_quartos'

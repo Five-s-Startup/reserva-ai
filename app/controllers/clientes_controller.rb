@@ -24,7 +24,7 @@ class ClientesController < ApplicationController
   def buscar
   end
 
-  def resultado
+  def buscar_clientes
     termo = params[:termo]
     @clientes = busca_por_termo(termo)
   end
