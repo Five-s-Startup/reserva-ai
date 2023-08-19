@@ -33,8 +33,4 @@ class Cliente < ApplicationRecord
     end
   end
 
-  scope :busca_por_termo, -> (termo) do
-    where("nome_completo LIKE ? OR cpf = ? OR email = ?", "%#{termo}%", termo, termo)
-  end
-
 end
