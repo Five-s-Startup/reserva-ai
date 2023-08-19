@@ -23,8 +23,7 @@ class ReservasController < ApplicationController
   def buscar
   end
 
-
-  def resultado
+  def buscar_reservas
     cpf = params[:cpf]
     @reservas = Reserva.buscar_por_cpf(cpf)
 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get '/reserva/buscar', to: 'reservas#buscar', as: :busca_reservas
-  get '/reserva/resultado', to: 'reservas#resultado', as: :resultado_busca_reservas
+  get '/reserva/buscar_reservas', to: 'reservas#buscar_reservas', as: :resultado_busca_reservas
 
   # Rota para a busca de clientes
   get '/cliente/buscar', to: 'clientes#buscar', as: :busca_clientes
