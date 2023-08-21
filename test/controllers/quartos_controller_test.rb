@@ -1,8 +1,11 @@
 require "test_helper"
 
 class QuartosControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @quarto = quartos(:one)
+    sign_in admins(:one)
   end
 
   test "should get index" do
