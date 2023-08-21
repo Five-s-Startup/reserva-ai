@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 
 gem "cpf_cnpj"
 
+gem "devise"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

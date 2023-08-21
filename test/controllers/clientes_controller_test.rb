@@ -1,8 +1,11 @@
 require "test_helper"
 
 class ClientesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @cliente = clientes(:one)
+    sign_in admins(:one)
   end
 
   test "should get index" do

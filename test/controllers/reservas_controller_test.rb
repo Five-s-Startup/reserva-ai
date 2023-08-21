@@ -1,8 +1,11 @@
 require "test_helper"
 
 class ReservasControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @reserva = reservas(:one)
+    sign_in admins(:one)
   end
 
   test "should get index" do

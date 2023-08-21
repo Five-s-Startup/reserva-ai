@@ -4,7 +4,8 @@ Feature: Gerenciamento de reservas
   So that eu saiba qual cliente reserva qual quarto
 
   Scenario Outline: Reservar um quarto
-    Given existe um cliente cadastrado com nome "<nome_completo>"
+    Given estou logado como admin
+    And existe um cliente cadastrado com nome "<nome_completo>"
     And existe um quarto cadastrado com numero <quarto>
     And estou na pagina de cadastro de reservas
     When preencho o formulario com cliente "<nome_completo>", quarto <quarto>, data de entrada "<entrada>" e saida "<saida>"
@@ -19,7 +20,8 @@ Feature: Gerenciamento de reservas
 
 
   Scenario Outline: Editar uma reserva
-    Given existe um cliente cadastrado com nome "<nome_completo>"
+    Given estou logado como admin
+    And existe um cliente cadastrado com nome "<nome_completo>"
     And existe um quarto cadastrado com numero <quarto>
     And o quarto <quarto> esta reservado para "<nome_completo>", com entrada em "<entrada>" e saida "<saida>"
     And estou na lista de reservas
@@ -37,7 +39,8 @@ Feature: Gerenciamento de reservas
       | DCBA DCBA     | 101    | 2100-01-01 | 2100-02-02 | 2100-01-02   |
 
   Scenario Outline: Tentar reservar um quarto para uma data passada
-    Given existe um cliente cadastrado com nome "<nome_completo>"
+    Given estou logado como admin
+    And existe um cliente cadastrado com nome "<nome_completo>"
     And existe um quarto cadastrado com numero <quarto>
     And estou na pagina de cadastro de reservas
     When preencho o formulario com cliente "<nome_completo>", quarto <quarto>, data de entrada "<entrada>" e saida "<saida>"
@@ -51,7 +54,8 @@ Feature: Gerenciamento de reservas
       | DCBA BCDA     | 101    | 2000-12-12 | 2000-01-01 | Entrada/Saida   |
 
   Scenario Outline: Tentar reservar um quarto ja reservado
-    Given existe um cliente cadastrado com nome "<nome_completo>"
+    Given estou logado como admin
+    And existe um cliente cadastrado com nome "<nome_completo>"
     And existe um quarto cadastrado com numero <quarto>
     And o quarto <quarto> esta reservado para "<nome_completo>", com entrada em "<entrada>" e saida "<saida>"
     And estou na pagina de cadastro de reservas
@@ -66,7 +70,8 @@ Feature: Gerenciamento de reservas
     | DCBA DCBA     | 101    | 3000-01-05 | 3000-01-10 | 3000-01-01   | 3000-01-15 |
 
   Scenario Outline: Remover uma reserva
-    Given existe um cliente cadastrado com nome "<nome_completo>"
+    Given estou logado como admin
+    And existe um cliente cadastrado com nome "<nome_completo>"
     And existe um quarto cadastrado com numero <quarto>
     And o quarto <quarto> esta reservado para "<nome_completo>", com entrada em "<entrada>" e saida "<saida>"
     And estou na lista de reservas
