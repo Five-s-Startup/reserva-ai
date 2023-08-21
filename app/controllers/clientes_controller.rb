@@ -24,9 +24,9 @@ class ClientesController < ApplicationController
   def buscar
   end
 
-  def resultado
+  def buscar_clientes
     termo = params[:termo]
-    @clientes = Cliente.busca_por_termo(termo)
+    @clientes = busca_por_termo(termo)
   end
 
   # POST /clientes or /clientes.json
@@ -76,5 +76,10 @@ class ClientesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def cliente_params
     params.require(:cliente).permit(:nome_completo, :data_nascimento, :cpf, :email)
+  end
+
+  # This method is responsible for searching for clients by term.
+  def busca_por_termo(termo)
+    Cliente.where('nome_completo LIKE ? OR cpf = ? OR email = ?', "%#{termo}%", termo, termo)
   end
 end
