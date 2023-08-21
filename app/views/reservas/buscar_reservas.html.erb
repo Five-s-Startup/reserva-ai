@@ -27,7 +27,7 @@
     <% @reservas.each do |reserva| %>
       <tr>
         <td><%= reserva.cliente.nome_completo %></td>
-        <td><%= reserva.quarto %></td>
+        <td><%= reserva.quarto.numero %></td>
         <td><%= reserva.entrada.strftime('%d/%m/%Y') %></td>
         <td><%= reserva.saida.strftime('%d/%m/%Y') %></td>
       </tr>

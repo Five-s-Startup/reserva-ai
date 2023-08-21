@@ -23,18 +23,11 @@ class ReservasController < ApplicationController
   def buscar
   end
 
-
-  def resultado
+  def buscar_reservas
     cpf = params[:cpf]
     @reservas = Reserva.buscar_por_cpf(cpf)
+    filtrar_reservas_por_data
 
-    if params[:data_inicio].present? && params[:data_fim].present?
-      data_inicio = Date.parse(params[:data_inicio])
-      data_fim = Date.parse(params[:data_fim])
-      @reservas = @reservas.select do |reserva|
-        reserva.entrada >= data_inicio && reserva.saida <= data_fim
-      end
-    end
     @data_inicio_filtro = params[:data_inicio]
     @data_fim_filtro = params[:data_fim]
     @cpf = cpf
@@ -87,5 +80,15 @@ class ReservasController < ApplicationController
     # Only allow a list of trusted parameters through.
     def reserva_params
       params.require(:reserva).permit(:cliente_id, :quarto_id, :entrada, :saida)
+    end
+
+    def filtrar_reservas_por_data
+      if params[:data_inicio].present? && params[:data_fim].present?
+        data_inicio = Date.parse(params[:data_inicio])
+        data_fim = Date.parse(params[:data_fim])
+        @reservas = @reservas.select do |reserva|
+          reserva.entrada >= data_inicio && reserva.saida <= data_fim
+        end
+      end
     end
 end
